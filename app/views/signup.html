@@ -1,0 +1,18 @@
+<form name="SignupForm" class="form-signin" novalidate ng-submit="signup(em,pwd)">
+	<h2 class="form-signin-heading">Please sign up</h2>
+	<label for="inputEmail" class="sr-only">Email address</label>
+	<input type="email" name="email" ng-model="em" class="form-control" placeholder="Email address" required>
+	<div class="form-errors text-danger" ng-show="SignupForm.email.$error"
+                ng-messages="SignupForm.email.$error"
+                ng-messages-include="views/error.html">
+    </div>   
+	<label for="inputPassword" class="sr-only">Password</label>
+	<input type="password" name="password" ng-model="pwd" class="form-control" ng-minlength="6" ng-maxlength="10" placeholder="Password" required>
+	<div class="form-errors text-danger" ng-show="SignupForm.password.$error"
+                ng-messages="SignupForm.password.$error"
+                ng-messages-include="views/error.html">
+    </div>
+	<p class="text-center text-success"> {{message}}</p>
+	<button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="SignupForm.$invalid">Sign up</button>
+</form>
+	<p class="text-center">Already have an account? <a href="#/login">Log in here</a></p>

@@ -1,0 +1,11 @@
+
+<h2> List of your events</h2>
+
+<span ng-show='events.length < 1'><h4>You dont have any event yet!</h4></span>
+<table class="table table-events table-striped table-condensed">
+ <tr ng-repeat="event in events">
+    <td class="td1"><p>{{event.name}}</p></td>
+    <td><button type="button"  class="btn btn-sm btn-link"><a href="#/edit/{{event.$id}}">Edit</a></button><button type="button" class="btn btn-sm btn-link" ng-click="removeEvent(event)">Delete</button></td>
+ </tr>
+
+</table>

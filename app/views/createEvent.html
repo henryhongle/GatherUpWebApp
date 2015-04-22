@@ -1,0 +1,34 @@
+<form name="CreateForm" class="form-signin" novalidate ng-submit="submitEvent(event)">
+	<h2 class="form-signin-heading">Create your event</h2>
+	<label class="sr-only">Event name</label>
+	<input type="text" name="ename" ng-model="event.name" class="form-control" placeholder="Event name" required>
+	<div class="form-errors text-danger" ng-show="CreateForm.ename.$error"
+                ng-messages="CreateForm.ename.$error"
+                ng-messages-include="views/error.html">
+    </div>
+
+   <input type="text" name="address" ng-model="event.address" class="form-control" placeholder="3841 Harris St San Diego CA 91941" required>
+	<div class="form-errors text-danger" ng-show="CreateForm.address.$error"
+                ng-messages="CreateForm.address.$error"
+                ng-messages-include="views/error.html">
+    </div>
+
+    <div class="dropdown">
+        <a class="dropdown-toggle my-toggle-select" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="">
+            <input type="text" class="form-control" value="{{ event.date | date:'yyyy-MM-dd HH:mm' }}">
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+            <datetimepicker data-ng-model="event.date"
+                            data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select',minView:'hour' }"></datetimepicker>
+        </ul>
+    </div>
+
+    <textarea name="description" ng-model="event.description" rows="5" class="form-control" placeholder="Event description" required></textarea>
+	<div class="form-errors text-danger" ng-show="CreateForm.description.$error"
+                ng-messages="CreateForm.description.$error"
+                ng-messages-include="views/error.html">
+    </div>
+    
+    </br>   
+	<button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="CreateForm.$invalid">Create event</button>
+</form>
