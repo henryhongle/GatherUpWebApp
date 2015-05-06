@@ -7,17 +7,18 @@ app.controller('editEventCtrl', function($scope, $stateParams, Event, $state, Ge
 	//console.log($scope.event.date);
 
 	$scope.submitEvent = function() {
-		//console.log($scope.event.date);	
-		var geoFire = Event.geoFire();
-		//var date = new Date($scope.event.date);
-		//$scope.event.date = date;
-
-		var address = $scope.event.address;
-		//var date = nen Date($scope.event.date);
 		//console.log($scope.event.date);
-		$scope.event.dateString = $scope.event.date.toLocaleDateString();
-		$scope.event.timeString = $scope.event.date.toLocaleTimeString();		
-		$scope.event.date = $scope.event.date.toJSON();
+		console.log($scope.event.date);	
+
+		var geoFire = Event.geoFire();
+		var date = new Date($scope.event.date);
+		//$scope.event.date = date;
+		console.log(date);
+		var address = $scope.event.address;
+		//var date = new Date($scope.event.date);
+		$scope.event.dateString = date.toLocaleDateString();
+		$scope.event.timeString = date.toLocaleTimeString();		
+		$scope.event.date = date.toJSON();
 		var geocodingPromise = Geocoder.geocodeAddress(address);
 		geocodingPromise.then( function (result) {
 			$scope.event.lat = result.lat;
